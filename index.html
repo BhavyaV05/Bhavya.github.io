@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />   
+    <link rel="stylesheet" href="fontawesome-free-6.5.1-web/css/all.min.css">
+    
+    <title>About Bhavya</title>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .flex-container {
+        display: flex;
+        background-color: azure;
+        flex-direction: column;
+        font-size: 30px;
+      }
+
+      .flex-container > div {
+        background-color: rgb(171, 255, 255);
+        margin: 10px;
+        padding: 20px;
+        border-radius: 20px;
+       
+   
+      }
+
+      .flex-container > div:hover {
+        background-image: linear-gradient(180deg, rgb(0, 251, 255), rgb(0, 176, 179));
+
+      }
+      .flex-container > .head:hover {
+        background-image: url(turq.jpg);
+
+      }
+      
+      .flex-container > .head {
+        align-items: center;
+        background-image: url(turq.jpg);
+        border-radius: 0px;
+        height: 150px;
+      }
+      
+      .flex-container > .line {
+        border-color: black;
+        color: rgb(0, 0, 0);
+        width: 80%;
+      }
+
+      .button {
+        border-radius: 120px;
+        background-color: rgb(192, 225, 230);
+        padding-right:20px;
+        border: none;
+        align-content: right;
+        transition-duration: 0.6s;
+        
+      }
+      .button:hover {
+        background-color: black;
+      }
+      
+      .mypic {
+        float: left;
+        word-wrap: normal;
+        padding-right: 20px;
+        border-radius: 10px;
+        max-width: 100%;
+      }
+      .dark-mode .mypic {
+        filter: invert(100%) hue-rotate(180deg);
+      }
+
+      .dark-mode {
+        filter: invert(100%) hue-rotate(180deg);
+      }
+      .dark-mode .head {
+        background-image: url(turqneg.png);
+      }
+      .dark-mode .head:hover{
+        background-image: url(turqneg.png);
+      }
+      .dark-mode .button{
+        padding-left: 20px;
+        padding-right:0px;
+      }
+
+      .social-icons {
+        list-style: none;
+        padding: 0;
+        }
+
+      .social-icons li {
+        display: inline-block;
+        margin-right: 10px;
+        }
+
+      .social-icons a {
+        text-decoration: none;
+        color: #333; /
+        }
+
+      header {
+        background-color:rgb(94, 243, 248);
+        font-size:large;
+        left: 0;
+        right: 0;
+        top: 5px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+         
+      }
+      header * {
+        display: inline;
+      }
+      header li {
+        margin: 20px;
+      }
+      header li a {
+        color: rgb(0, 0, 0);
+        text-decoration:wavy;
+      }
+
+      ul{
+        list-style-type:square;
+      }
+
+      .blog1{
+        padding: 7px;
+
+      }
+      .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+         
+            padding: 1em;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar li {
+            margin-right: 20px;
+        }
+
+        .menu-icon {
+            cursor: pointer;
+            margin-left:auto;
+
+        }
+        @media (min-width: 769px){
+          .menu-icon{
+            display: none;
+          }
+        }
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px; 
+                left: 0;
+                width: 100%;
+                background-color:whitesmoke;
+            }
+
+            .navbar ul.show {
+                display: flex;
+            }
+
+            .navbar li {
+                margin: 0;
+                text-align: center;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+            .flex-container{
+            font-size: 25px;
+          }
+        }
+
+        @media (min-width: 174%) {
+          .mypic {
+            max-width: 80%; 
+           }  
+        }
+      a {
+          color: rgb(0, 73, 115);
+          background-image: linear-gradient(#5aadd9, #5aadd9), linear-gradient(#5aadd9, #5aadd9);
+          background-size: 0% 0.1em;
+          background-position-y: 100%;
+          background-position-x: 0%, 100%;
+          background-repeat: no-repeat;
+          transition: background-size 0.2s ease-in-out;
+          text-decoration: none;
+        }
+      a:hover,
+      a:focus,
+      a:active {
+          background-size: 100% 0.1em;
+      }
+
+    </style>
+  </head>
+
+  <body style="background-color: rgb(39, 132, 148)">
+    <header>
+      
+      <button class="button" id="modebutton">
+        <img
+          id="bulbimg"
+          src="bulb2.png"
+          align="right"
+          style=
+            "border-radius: 120px;
+            height: 35px;
+            width: 35px;
+            align-items: center;" />       
+      </button>
+     <div class="navbar">
+      <div class="menu-icon" onclick="toggleMenu()" >☰</div>
+    <nav>
+      <ul>
+        <li><a href="#about">About me</a></li>
+        <li><a href="#ed">Educational Background</a></li>
+        <li><a href="#ach">Achievements</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#blogs">Blogs</a></li>
+        <li><a href="#socials">Socials</a></li>
+      </ul>
+    </nav>
+  </div>
+   
+  </header>
+  
+    <script>
+      function toggleMenu() {
+            const navbarList = document.querySelector('.navbar ul');
+            navbarList.classList.toggle('show');
+        }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const bulbimg = document.getElementById("bulbimg");
+        const modebutton = document.getElementById("modebutton");
+        var num = 1;
+
+        modebutton.addEventListener("click", function () {
+          if (num) {
+            bulbimg.src = "nobulb.png";
+            num = 0;
+          } else {
+            bulbimg.src = "bulb2.png";
+            num = 1;
+          }
+          document.body.classList.toggle("dark-mode");
+        });
+      });
+      
+    </script>
+
+    <div class="flex-container">
+      <div class="head" >
+        <!--<img class="background" src="turq.jpg" style="filter: blur(20px);">-->
+        <div class="Hey"
+          align="middle"
+          style=
+          "font-size: 20px;
+            align-content: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman',
+              serif;
+            background-color: rgb(171, 255, 255);
+            width: 140px;
+            text-align: center;
+            border-radius: 20px">
+          <em>-Hey,I'm-</em>
+        </div>
+        <br/>
+        <div class="bhavya"
+          align="middle"
+          style=
+            "font-size: 50px;
+            background-color: rgb(170, 255, 255);
+            width: 190px;
+            border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            font-family: fantasy;">
+          Bhavya
+        </div>
+      </div>
+      <hr class="line" />
+      <div id="about">
+        <h4>About Me</h4>
+        <img src="mypic.png" class="mypic" />
+        <p>
+          As a first year CLD student at IIITH, my academic life is filled with
+          loads of assignments, quizzes, exams and what not! But despite this, I
+          still manage to find some time for myself and my hobbies. Having
+          stayed in Hyderabad for a little over 18 years now, you might expect
+          me to know the entire city like the back of my hand, but oftentimes,
+          ironically, my friends from other cities know much more about it than
+          me! Following the Covid-19 lockdown,my life changed a lot, and so did
+          my perception of it. Being disconnected from people for about 2 years
+          made me realise the importance of friends in life and made me
+          appreciate them a little bit more. I am very interested in photography
+          and art. While I mostly click pictures of nature and sunsets, I am also 
+          very interested in clicking portraits.I try to paint and draw whenever i find time,
+           mostly during long breaks from school and college. I have been learning classical 
+           music ever since I was 4 years old and love listening to music. I mostly listen 
+           to R&B and pop songs,and a wide variety of languages.
+        </p>
+      </div>
+
+      <div  id="ed">
+        <h4>Education Background</h4>
+        <ul>
+          <li>
+            International Institute of Information Technology, Hyderabad (2023 -
+            present)
+          </li>
+          <li>Narayana Junior college (2021 - 2023)</li>
+          <li>Delhi Public School(2011 - 2021)</li>
+        </ul>
+      </div>
+
+      <div id="ach">
+        <h4>Achievements</h4>
+        <ul>
+          <li>
+            Secured a good rank in Joint Entrance Exam(for engineering), in both
+            mains and advanced levels
+          </li>
+          <li>
+            Have given multiple classical music concerts with my music academy
+            classamtes
+          </li>
+          <li>Have cleared level 1 of spelling bee competiton</li>
+          <li>Have participated in multiple olympiads in middle and high school, including NTSE and NSEJS</li>
+        </ul>
+      </div>
+      <div id="skills"><h4>Skills</h4>
+        <ul>
+          <li><em><u>Communication skills</u></em><br>
+           I can communicate well with all my peers, seniors,juniors and instructors, and make sure that no misunderstanding pops up anytime. I understand the difference in communicating with people from different categories as mentioned above.</li>
+          <li><em><u>Problem solving skills</u></em><br>
+            Demonstrating effective problem-solving skills in challenging situations has been a consistent aspect of my experience.My approach to issues is characterized by a creative and innovative mindset, allowing me to navigate complex situations effectively and find optimal solutions.
+          </li>
+          <li><em><u>Adaptability</u></em><br>
+            I excel as a quick learner, easily adapting to new environments. My flexibility is evident in managing changing priorities and deadlines, ensuring efficient and timely task completion.</li>
+          <li><em><u>Teamwork</u></em><br>
+            I contribute actively as a team player, promoting collaboration within the work environment. I have valuable experience in effectively collaborating with cross-functional teams to achieve shared goals.</li>
+          <li><em><u>Technical Skills</u></em><br>
+            I demonstrate proficiency in C and possess a solid understanding of various programming languages, adapting comfortably to new technologies as they emerge.    </li>
+      </div>
+      <div id="blogs" class="hidden"><h4>Blogs</h4>
+
+      <a href="blog1.html" target="_blank" class="blog1">A brief Introduction to Rock Music</a>
+      <a href="blog2.html" target="_blank" class="blog1">Photography:An intro</a> 
+     </div>
+     <div id="socials">
+      <h4>Socials</h4>
+      <ul class="social-icons">
+        <li><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a></li>
+        <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+        <li><a href="mailto:bhavyaram.v@research.iiit.ac.in" target="_blank"><i class="fas fa-envelope-open-text"></i></a></li>
+        <li><a href="https://github.com/BhavyaV05" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li>Ph No.:+91 8179526100</li>
+        <li><a href="resume.html" target="_blank" download="Bhavya_resume">RESUME</a></li>
+      </ul>
+
+     </div>
+    </div>
+  
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>An Brief Introduction to rock music</title>
+  </head>
+  <body style="background-color: rgb(156, 153, 153)">
+    <h1 align="center" style="color: rgb(146, 8, 8)"><u>Rock Music</u></h1>
+    <p style="color: antiquewhite; font-size: 25px">
+      Rock is a broad genre of popular music that originated as "rock and roll"
+      in the United States in the late 1940s and early 1950s, developing into a
+      range of different styles from the mid-1960s, particularly in the United
+      States and the United Kingdom.[3] It has its roots in 1940s and 1950s rock
+      and roll, a style that drew directly from the blues and rhythm and blues
+      genres of African-American music and from country music. Rock also drew
+      strongly from genres such as electric blues and folk, and incorporated
+      influences from jazz, classical, and other musical styles. For
+      instrumentation, rock has centered on the electric guitar, usually as part
+      of a rock group with electric bass guitar, drums, and one or more singers.
+      Usually, rock is song-based music with a 4/4 time signature using a
+      verse-chorus form, but the genre has become extremely diverse. Like pop
+      music, lyrics often stress romantic love but also address a wide variety
+      of other themes that are frequently social or political. Rock was the most
+      popular genre of music in the U.S. and much of the Western world from the
+      1950s to the 2010s.
+    </p>
+
+    <div class="like-section">
+      <button id="like-btn" onclick="like()">Like</button>
+      <span id="like-counter">0</span>
+    </div>
+
+    <div id="comment-box">
+      <h2>Leave a Comment</h2>
+      <textarea id="comment-input" rows="4" cols="50"></textarea>
+      <br />
+      <button id="submit_cmnt" onclick="submitComment()">Submit Comment</button>
+    </div>
+
+    <div id="comment-section">
+      <h2>Comments</h2>
+      <ul id="comments-list"></ul>
+    </div>
+
+    <button id="clear-storage" onclick="clearLocalStorage()">
+      Clear Local Storage
+    </button>
+
+    <script>
+      let likeCount = parseInt(localStorage.getItem("likeCount")) || 0;
+
+      function like() {
+        likeCount++;
+        localStorage.setItem("likeCount", likeCount);
+        document.getElementById("like-counter").innerText = likeCount;
+      }
+
+      // Comment functionality
+      function submitComment() {
+        const commentInput = document.getElementById("comment-input").value;
+        if (commentInput.trim() !== "") {
+          const commentList = document.getElementById("comments-list");
+          const newComment = document.createElement("li");
+          newComment.textContent = commentInput;
+          commentList.appendChild(newComment);
+          document.getElementById("comment-input").value = "";
+
+          const comments = JSON.parse(localStorage.getItem("comments")) || [];
+          comments.push(commentInput);
+          localStorage.setItem("comments", JSON.stringify(comments));
+        }
+      }
+
+      window.onload = function () {
+        const comments = JSON.parse(localStorage.getItem("comments")) || [];
+        const commentList = document.getElementById("comments-list");
+        comments.forEach((comment) => {
+          const newComment = document.createElement("li");
+          newComment.textContent = comment;
+          commentList.appendChild(newComment);
+        });
+
+        document.getElementById("like-counter").innerText = likeCount;
+      };
+
+      // Function to clear local storage
+      function clearLocalStorage() {
+        localStorage.clear();
+        likeCount = 0;
+        document.getElementById("like-counter").innerText = likeCount;
+        const commentList = document.getElementById("comments-list");
+        commentList.innerHTML = "";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog on photography </title>
+</head>
+<body style="background-color: rgb(233, 183, 229); color: rgb(30, 73, 73);">
+    <h1 align="center"style="ba"><u>Photography</u></h1>
+    <p>Photography is the art, application, and practice of creating images by recording light, either electronically by means of an image sensor, or chemically by means of a light-sensitive material such as photographic film. It is employed in many fields of science, manufacturing (e.g., photolithography), and business, as well as its more direct uses for art, film and video production, recreational purposes, hobby, and mass communication.<br>
+    Typically, a lens is used to focus the light reflected or emitted from objects into a real image on the light-sensitive surface inside a camera during a timed exposure. With an electronic image sensor, this produces an electrical charge at each pixel, which is electronically processed and stored in a digital image file for subsequent display or processing. The result with photographic emulsion is an invisible latent image, which is later chemically "developed" into a visible image, either negative or positive, depending on the purpose of the photographic material and the method of processing. A negative image on film is traditionally used to photographically create a positive image on a paper base, known as a print, either by using an enlarger or by contact printing.</p>
+    <div class="like-section">
+        <button id="like-btn" onclick="like()">Like</button>
+        <span id="like-counter">0</span>
+      </div>
+  
+      <div id="comment-box">
+        <h2>Leave a Comment</h2>
+        <textarea id="comment-input" rows="4" cols="50"></textarea>
+        <br />
+        <button id="submit_cmnt" onclick="submitComment()">Submit Comment</button>
+      </div>
+  
+      <div id="comment-section">
+        <h2>Comments</h2>
+        <ul id="comments-list"></ul>
+      </div>
+  
+      <button id="clear-storage" onclick="clearLocalStorage()">
+        Clear Local Storage
+      </button>
+  
+      <script>
+        let likeCount = parseInt(localStorage.getItem("likeCount")) || 0;
+  
+        function like() {
+          likeCount++;
+          localStorage.setItem("likeCount", likeCount);
+          document.getElementById("like-counter").innerText = likeCount;
+        }
+  
+        // Comment functionality
+        function submitComment() {
+          const commentInput = document.getElementById("comment-input").value;
+          if (commentInput.trim() !== "") {
+            const commentList = document.getElementById("comments-list");
+            const newComment = document.createElement("li");
+            newComment.textContent = commentInput;
+            commentList.appendChild(newComment);
+            document.getElementById("comment-input").value = "";
+  
+            const comments = JSON.parse(localStorage.getItem("comments")) || [];
+            comments.push(commentInput);
+            localStorage.setItem("comments", JSON.stringify(comments));
+          }
+        }
+  
+        window.onload = function () {
+          const comments = JSON.parse(localStorage.getItem("comments")) || [];
+          const commentList = document.getElementById("comments-list");
+          comments.forEach((comment) => {
+            const newComment = document.createElement("li");
+            newComment.textContent = comment;
+            commentList.appendChild(newComment);
+          });
+  
+          document.getElementById("like-counter").innerText = likeCount;
+        };
+  
+        // Function to clear local storage
+        function clearLocalStorage() {
+          localStorage.clear();
+          likeCount = 0;
+          document.getElementById("like-counter").innerText = likeCount;
+          const commentList = document.getElementById("comments-list");
+          commentList.innerHTML = "";
+        }
+      </script>
+
+
+
+</body>
+</html>
